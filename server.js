@@ -14,7 +14,8 @@ app.post('/webhook', async (req, res) => {
     // Extract necessary values from the webhook data
     const happenedAt = webhookData?.context?.happened_at || 'Unknown';
     const templateName = webhookData?.job?.template?.name || 'Unknown';
-
+    const submitID = webhookData?.job?.address?.apartment || 'Unknown';
+    
     // Check if the template name is "FTTH"
     if (templateName === "FTTH") {
         // Dynamically import node-fetch
@@ -22,9 +23,9 @@ app.post('/webhook', async (req, res) => {
 
         // Prepare the data for the POST request
         const postData = {
-            appId: "LDF100199",
+            appId: "FTT229730",
             workplaceId: "EMT052658",
-            submissionId: "LXQ10686354",
+            submissionId: submitID,
             requestingUserEmailAddress: "vikas.khanna@emtel.com",
             data: {
                 completion: happenedAt
