@@ -15,6 +15,7 @@ app.post('/webhook', async (req, res) => {
     const happenedAt = webhookData?.context?.happened_at || 'Unknown';
     const templateName = webhookData?.job?.template?.name || 'Unknown';
     const submitID = webhookData?.job?.address?.apartment || 'Unknown';
+    const outcome = webhookData?.job?.resolution?.successful || 'Unknown';
     
     // Check if the template name is "FTTH"
     if (templateName === "FTTH") {
@@ -28,7 +29,8 @@ app.post('/webhook', async (req, res) => {
             submissionId: submitID,
             requestingUserEmailAddress: "vikas.khanna@emtel.com",
             data: {
-                completion: happenedAt
+                completion: happenedAt,
+                status_com: outcome
             }
         };
 
