@@ -19,7 +19,7 @@ app.post('/webhook', async (req, res) => {
     const jobcomment = webhookData?.job?.resolution?.comment || 'Unknown';
     
     // Check if the template name is "FTTH"
-    if (templateName === "FTTH") {
+    if (templateName === "FTTH-NSLD") {
         // Dynamically import node-fetch
         const fetch = await import('node-fetch').then(module => module.default);
 
